@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Property List page</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Smart Track</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">                        
+                        <a href=""><i class="fa fa-fw fa-file"></i> Property List</a>
+                    </li>                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper" class="manual-height">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Property List
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-fw fa-file"></i> Property List
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <input type="search" id="search" value="" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                	<th>Property Number</th>
+                                    <th>Property Name</th>
+                                    <th>Contact Name</th>
+                                    <th>Contact Number</th>
+                                    <th>Address</th>
+                                    <th>Comments</th>
+                                    <th>Update Date</th>
+                                    <th>Property Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%for(i in property)
+								{
+								%>
+									<tr>
+									<td><%=property[i].PROPERTY_NO%></td>
+									<td><a href='/dashboard_homepage'><%=property[i].PROPERTY_NAME%></a></td>
+									<td><%=property[i].CONTACT_NAME%></td>
+									<td><%=property[i].CONTACT_NUMBER%></td>
+									<td><%=property[i].ADDRESS%></td>
+									<td><%=property[i].COMMENTS%></td>
+									<td><%=property[i].UPDATE_DATE%></td>
+									<td><%=property[i].PROPERTY_DETAILSCOL%></td>
+									</tr>
+								<%}%>
+                            </tbody>
+                        </table>
+                        <hr>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+
+    
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/jquery.searchable-1.0.0.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+    
+        $(function () 
+        {
+            $( '#table' ).searchable({
+                striped: true,
+                oddRow: { 'background-color': '#f5f5f5' },
+                evenRow: { 'background-color': '#fff' },
+                searchType: 'fuzzy'
+            });
+        
+            $( '#searchable-container' ).searchable({
+                searchField: '#container-search',
+                selector: '.row',
+                childSelector: '.col-xs-4',
+                show: function( elem ) {
+                    elem.slideDown(100);
+                },
+                hide: function( elem ) {
+                    elem.slideUp( 100 );
+                }
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>
